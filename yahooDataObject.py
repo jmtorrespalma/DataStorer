@@ -59,4 +59,15 @@ class yahooDataObject:
 			self.D = {}
 
 
+	def updateDataBase(self, cur):
 
+		# First, we give format to string
+		string = "'{}', ".format(self.D['symbol'])
+		string = string + "{}, ".format(self.D['last'])
+		string = string + "'{}', ".format(self.D['date'])
+		string = string + "{}, ".format(self.D['change'])
+		string = string + "{}, ".format(self.D['high'])
+		string = string + "{}, ".format(self.D['low'])
+		string = string + "{}".format(self.D['vol'])
+	
+		cur.execute('INSERT INTO data VALUES('+ string +')')
